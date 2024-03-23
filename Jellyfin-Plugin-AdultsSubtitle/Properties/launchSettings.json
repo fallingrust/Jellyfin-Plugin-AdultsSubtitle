@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Jellyfin-Plugin-AdultsSubtitle": {
+      "commandName": "Project",
+      "workingDirectory": "E:\\EDGE DownLoad\\jellyfin_10.8.13\\jellyfin_10.8.13",
+      "remoteDebugEnabled": false
+    }
+  }
+}
