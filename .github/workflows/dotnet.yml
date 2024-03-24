@@ -53,3 +53,8 @@ jobs:
       shell: cmd
       run: Manifest.exe ${{ steps.create_package.outputs.release_tag }}
       
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
