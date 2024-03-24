@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Manifest": {
+      "commandName": "Project",
+      "commandLineArgs": "0.0.0.2 1111111 E:\\VS2022Preview\\Projects\\Jellyfin-Plugin-AdultsSubtitle\\Jellyfin-Plugin-AdultsSubtitle\\Jellyfin-Plugin-AdultsSubtitle\\manifest.json"
+    }
+  }
+}

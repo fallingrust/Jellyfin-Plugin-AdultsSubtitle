@@ -11,11 +11,42 @@
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>C:\Users\666\AppData\Local\jellyfin\plugins\AdultsSubtitle_1.0.0.0</OutputPath>
+		<OutputPath>C:\Users\666\AppData\Local\jellyfin\plugins\AdultsSubtitle</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="1.1.2" />
 		<PackageReference Include="Jellyfin.Controller" Version="10.8.13" />
 	</ItemGroup>
+	<Target Name="delete" AfterTargets="Build" >
+		<ItemGroup>
+			<FilesToDelete Include="$(OutputPath)\*.pdb" />
+			<FilesToDelete Include="$(OutputPath)\MediaBrowser.*" />
+			<FilesToDelete Include="$(OutputPath)\Jellyfin.*" />
+			<FilesToDelete Include="$(OutputPath)\Microsoft.*" />
+			<FilesToDelete Include="$(OutputPath)\System.*" />
+			<FilesToDelete Include="$(OutputPath)\*.json" />
+			<FilesToDelete Include="$(OutputPath)\Emby.*" />
+			<FilesToDelete Include="$(MSBuildProjectDirectory)\*.zip" />		
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+	</Target>
 
+	<Target Name="ZipOutputPath" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+        <ZipDirectory
+            SourceDirectory="$(OutputPath)"
+            DestinationFile="$(MSBuildProjectDirectory)\AdultsSubtitle.zip" />
+	 <ItemGroup>
+      <FileToHash Include="$(MSBuildProjectDirectory)\AdultsSubtitle.zip" />
+    </ItemGroup>
+      <GetFileHash Files="@(FileToHash)">
+        <Output
+            TaskParameter="Hash"
+            ItemName="FileHash" />
+      </GetFileHash>
+  
+	<Exec Command="$(MSBuildProjectDirectory)\Manifest.exe $(Version) @(FileHash) $(MSBuildProjectDirectory)\manifest.json" /> 
+	
+    </Target>
+
+   
 </Project>
