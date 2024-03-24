@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Security.Cryptography;
+using System.Text.Json;
 
 namespace Manifest
 {
@@ -7,7 +8,7 @@ namespace Manifest
         static void Main(string[] args)
         {
             var version = args[0];
-            var md5 = args[1];
+            var md5 = GetMD5(args[1]);
             var path = args[2];
             using var sr = new StreamReader(path);
             var json = sr.ReadToEnd();
@@ -34,6 +35,14 @@ namespace Manifest
             sr.Dispose();
             using var sw = new StreamWriter(path);
             sw.Write(JsonSerializer.Serialize(new PackageInfo[] { packet }, PackageInfoJsonContext.Default.IEnumerablePackageInfo));
+        }
+
+        private static string GetMD5(string filePath)
+        {
+            using var md5 = MD5.Create();
+            using var fs = File.OpenRead(filePath);
+            var buffer = md5.ComputeHash(fs);
+            return BitConverter.ToString(buffer).Replace("-", "").ToLower();
         }
     }
 }
