@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
   
     steps:
     - uses: actions/checkout@v4
@@ -49,4 +49,7 @@ jobs:
           #          "${{ steps.create_package.outputs.filename }}"
         files: |
           *.zip
+    - name: Update Manifest
+      shell: cmd
+      run: \Jellyfin-Plugin-AdultsSubtitle\Manifest.exe ${{ steps.create_package.outputs.release_tag }}
       
