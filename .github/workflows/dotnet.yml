@@ -50,6 +50,5 @@ jobs:
         files: |
           *.zip
     - name: Update Manifest
-      shell: cmd
       run: \Jellyfin-Plugin-AdultsSubtitle\Manifest.exe ${{ steps.create_package.outputs.release_tag }}
       
