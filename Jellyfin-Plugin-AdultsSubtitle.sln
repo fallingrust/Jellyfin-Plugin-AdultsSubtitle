@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34321.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin-Plugin-AdultsSubtitle", "Jellyfin-Plugin-AdultsSubtitle\Jellyfin-Plugin-AdultsSubtitle.csproj", "{0D3F3273-1186-4EB6-892C-780F86479546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manifest", "Manifest\Manifest.csproj", "{3210077A-12A0-4580-9725-6864B662458C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manifest", "Manifest\Manifest.csproj", "{3210077A-12A0-4580-9725-6864B662458C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
