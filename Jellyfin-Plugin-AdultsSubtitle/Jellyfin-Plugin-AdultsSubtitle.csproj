@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Version>1.0.3</Version>
+		<GenerateDependencyFile>false</GenerateDependencyFile><!--remove deps.json-->
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -13,10 +14,14 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<OutputPath>C:\Users\666\AppData\Local\jellyfin\plugins\AdultsSubtitle</OutputPath>
 	</PropertyGroup>
-	
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>None</DebugType>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="1.1.2" />
-		<PackageReference Include="Jellyfin.Controller" Version="10.8.13" />
+		<PackageReference Include="Jellyfin.Controller" Version="10.8.13" >
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
 	</ItemGroup>
-	
 </Project>
