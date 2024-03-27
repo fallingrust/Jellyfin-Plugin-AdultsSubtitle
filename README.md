@@ -2,13 +2,27 @@
 
 # Jellyfin-Plugin-AdultsSubtitle
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/stargazers">
+  <img alt="Stars" src="https://img.shields.io/github/stars/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square">
+</a>
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/graphs/contributors">
+<img alt="Contributors" src="https://img.shields.io/github/contributors/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square">
+</a>
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/network/members">
+<img alt="Forks" src="https://img.shields.io/github/forks/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square">
+</a>
+<a href="https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg">
+<img alt="Issues" src="https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square">
+</a>
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/blob/master/LICENSE.txt">
+<img alt="MIT License" src="https://img.shields.io/github/v/release/fallingrust/Jellyfin-Plugin-AdultsSubtitle?include_prereleases&logo=smartthings">
+</a>
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle">
+<img alt="Downloads" src="https://img.shields.io/github/downloads/fallingrust/Jellyfin-Plugin-AdultsSubtitle/total">
+</a>
+<a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/releases">
+<img alt="Releases" src="https://img.shields.io/github/v/release/fallingrust/Jellyfin-Plugin-AdultsSubtitle?include_prereleases&logo=smartthings">
+</a>
 
 <p align="center">
   <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/">
@@ -34,33 +48,4 @@ https://raw.githubusercontent.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/mas
 ### 框架
 
 - [AngleSharp](https://github.com/AngleSharp/AngleSharp)
-
-### 版权说明
-
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/LICENSE.txt)
-
-<!-- links -->
-
-[your-project-path]:fallingrust/Jellyfin-Plugin-AdultsSubtitle
-
-[contributors-shield]: https://img.shields.io/github/contributors/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
-
-[contributors-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/graphs/contributors
-
-[forks-shield]: https://img.shields.io/github/forks/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
-
-[forks-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/network/members
-
-[stars-shield]: https://img.shields.io/github/stars/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
-
-[stars-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/stargazers
-
-[issues-shield]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
-
-[issues-url]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg
-
-[license-shield]: https://img.shields.io/github/license/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
-
-[license-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/blob/master/LICENSE.txt
-
 
