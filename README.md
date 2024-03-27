@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/">
-    <img src="Jellyfin-Plugin-AdultsSubtitle/logo.png" alt="Logo" width="519" height="300">
+    <img src="Jellyfin-Plugin-AdultsSubtitle/logo.png" alt="Logo" width="985" height="300">
   </a>
 
 ### 关于
