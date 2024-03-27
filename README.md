@@ -1,6 +1,6 @@
 
 
-# Jellyfin-Plugin-AdultsSubtitleh
+# Jellyfin-Plugin-AdultsSubtitle
 
 <!-- PROJECT SHIELDS -->
 
@@ -11,7 +11,7 @@
 [![MIT License][license-shield]][license-url]
 
 <p align="center">
-  <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/">
+  <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/">
     <img src="Jellyfin-Plugin-AdultsSubtitle/logo.png" alt="Logo" width="519" height="300">
   </a>
 
@@ -37,30 +37,30 @@ https://raw.githubusercontent.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/mas
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/LICENSE.txt)
 
 <!-- links -->
 
-[your-project-path]:fallingrust/Jellyfin-Plugin-AdultsSubtitleh
+[your-project-path]:fallingrust/Jellyfin-Plugin-AdultsSubtitle
 
-[contributors-shield]: https://img.shields.io/github/contributors/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
 
-[contributors-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/graphs/contributors
+[contributors-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
 
-[forks-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/network/members
+[forks-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
 
-[stars-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/stargazers
+[stars-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
 
-[issues-url]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg
+[issues-url]: https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg
 
-[license-shield]: https://img.shields.io/github/license/fallingrust/Jellyfin-Plugin-AdultsSubtitleh.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square
 
-[license-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitleh/blob/master/LICENSE.txt
+[license-url]: https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/blob/master/LICENSE.txt
 
 
