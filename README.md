@@ -15,7 +15,7 @@
 <img alt="Issues" src="https://img.shields.io/github/issues/fallingrust/Jellyfin-Plugin-AdultsSubtitle.svg?style=flat-square">
 </a>
 <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/blob/master/LICENSE.txt">
-<img alt="MIT License" src="https://img.shields.io/github/v/release/fallingrust/Jellyfin-Plugin-AdultsSubtitle?include_prereleases&logo=smartthings">
+<img alt="MIT License" src="https://img.shields.io/github/license/fallingrust/Jellyfin-Plugin-AdultsSubtitle">
 </a>
 <a href="https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle">
 <img alt="Downloads" src="https://img.shields.io/github/downloads/fallingrust/Jellyfin-Plugin-AdultsSubtitle/total">
