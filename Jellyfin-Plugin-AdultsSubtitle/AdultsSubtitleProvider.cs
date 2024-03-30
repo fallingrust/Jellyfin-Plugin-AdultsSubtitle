@@ -50,6 +50,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle
 
         public async Task<IEnumerable<RemoteSubtitleInfo>> Search(SubtitleSearchRequest request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation($"start search {request.Name} {request.Language} subtitle ");
             if (!LanguagesMaps.TryGetValue(request.Language,out var subCatLanguage))
             {
                 _logger.LogInformation($"language({request.Language}) not support~");
@@ -60,9 +61,11 @@ namespace Jellyfin_Plugin_AdultsSubtitle
             var results = new List<RemoteSubtitleInfo>();
 
             var searchResult = await SearchAsync(request.Name, cancellationToken);
+            _logger.LogInformation($"search {request.Name} {request.Language} subtitle  result --->{searchResult} ");
             if (!string.IsNullOrWhiteSpace(searchResult))
             {
                 var downloadUrl = await SearchDownloadUrlAsync(subCatLanguage, searchResult, cancellationToken);
+                _logger.LogInformation($"search {request.Name} {request.Language} subtitle  download url --->{downloadUrl} ");
                 if (!string.IsNullOrWhiteSpace(downloadUrl))
                 {
                     var id = Guid.NewGuid().ToString("N");
