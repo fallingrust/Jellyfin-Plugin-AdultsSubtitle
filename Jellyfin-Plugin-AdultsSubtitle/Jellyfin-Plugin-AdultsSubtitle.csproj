@@ -5,14 +5,14 @@
 		<RootNamespace>Jellyfin_Plugin_AdultsSubtitle</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.1.0.4</Version>
+		<Version>1.1.0.5</Version>
 		<GenerateDependencyFile>false</GenerateDependencyFile><!--remove deps.json-->
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>C:\ProgramData\Jellyfin\Server\plugins\AdultsSubtitle_$(Version)</OutputPath>
+		<OutputPath>C:\ProgramData\Jellyfin\Server\plugins\AdultsSubtitle_v$(Version)</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<DebugSymbols>false</DebugSymbols>

@@ -53,7 +53,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                     await zipStream.CopyToAsync(ms, cancellationToken);
                     ms.Position = 0;
                     using var archive = new ZipArchive(ms);
-                    archive.ExtractToDirectory(Path.Combine(_applicationPaths.PluginsPath, $"AdultsSubtitle_{lastestVersion.Value.Item1}"), true);
+                    archive.ExtractToDirectory(Path.Combine(_applicationPaths.PluginsPath, $"AdultsSubtitle_v{lastestVersion.Value.Item1}"), true);
 
                     var curVersionPlugin = _pluginManager.GetPlugin(AdultsSubtitlePlugin.Instance.Id, curVersion);
                     if (curVersionPlugin != null)
