@@ -32,7 +32,7 @@ jobs:
       shell: bash
       run: |
         tag=$(git describe --tags --always)
-        release_name="AdultsSubtitle_${steps.create_package.outputs.release_tag}"
+        release_name="AdultsSubtitle_${tag}"
 
         # Pack files
         7z a -tzip "${release_name}.zip" "./bin/*"
