@@ -9,7 +9,7 @@ namespace Manifest
         {
             var localPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "manifest.json");
             var version = args[0];
-            var sourceUrl = $"https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/releases/download/{version}/AdultsSubtitle.zip";
+            var sourceUrl = $"https://github.com/fallingrust/Jellyfin-Plugin-AdultsSubtitle/releases/download/{version}/AdultsSubtitle_{version}.zip";
             using var client = new HttpClient();
             var response = await client.GetAsync(sourceUrl);
             var stream = await response.Content.ReadAsStreamAsync();
