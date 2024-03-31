@@ -43,59 +43,59 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             {
                 if (item is Movie movie)
                 {
+                    var language = "chi";
+                    var option = _libraryManager.GetLibraryOptions(item);
                     var dirInfo = new DirectoryInfo(movie.ContainingFolderPath);
                    
-                    if (!movie.HasSubtitles 
-                        && !movie.FileNameWithoutExtension.ToLower().EndsWith("-C") 
+                    if (option != null
+                        && !movie.HasSubtitles
+                        && !option.DisabledSubtitleFetchers.Contains(AdultsSubtitlePlugin.Instance.Name)
+                        && option.SubtitleFetcherOrder.Contains(AdultsSubtitlePlugin.Instance.Name)
+                        && Api.LanguagesMaps.TryGetValue(language, out var subCatLanguage)
+                        && !movie.FileNameWithoutExtension.ToLower().EndsWith("-c")
                         && !dirInfo.GetFiles().Any(p => p.Name.Contains(movie.FileNameWithoutExtension) && p.Extension == ".srt"))
                     {
+
                         _logger.LogInformation($"{movie.FileNameWithoutExtension} has no subtitle");
-                        var option = _libraryManager.GetLibraryOptions(item);
-                        var language = "chi";
+                      
                         if (option.SubtitleDownloadLanguages != null && option.SubtitleDownloadLanguages.Length > 0)
                         {
                             language = option.SubtitleDownloadLanguages[0];
                         }
-                       
-                        if (option != null
-                            && !option.DisabledSubtitleFetchers.Contains(AdultsSubtitlePlugin.Instance.Name)
-                            && option.SubtitleFetcherOrder.Contains(AdultsSubtitlePlugin.Instance.Name) 
-                            && Api.LanguagesMaps.TryGetValue(language, out var subCatLanguage))
+
+                        using var client = _httpClientFactory.CreateClient();
+                        try
                         {
-                            using var client = _httpClientFactory.CreateClient();
-                            try
+                            var searchResult = await Api.SearchAsync(client, movie.FileNameWithoutExtension, cancellationToken);
+                            _logger.LogInformation($"search {movie.FileNameWithoutExtension} {language} subtitle  result --->{searchResult} ");
+                            if (!string.IsNullOrWhiteSpace(searchResult))
                             {
-                                var searchResult = await Api.SearchAsync(client, movie.FileNameWithoutExtension, cancellationToken);
-                                _logger.LogInformation($"search {movie.FileNameWithoutExtension} {language} subtitle  result --->{searchResult} ");
-                                if (!string.IsNullOrWhiteSpace(searchResult))
+                                var downloadUrl = await Api.SearchDownloadUrlAsync(client, subCatLanguage, searchResult, cancellationToken);
+                                _logger.LogInformation($"search{movie.FileNameWithoutExtension} {language} subtitle  download url --->{downloadUrl} ");
+                                if (!string.IsNullOrWhiteSpace(downloadUrl))
                                 {
-                                    var downloadUrl = await Api.SearchDownloadUrlAsync(client, subCatLanguage, searchResult, cancellationToken);
-                                    _logger.LogInformation($"search{movie.FileNameWithoutExtension} {language} subtitle  download url --->{downloadUrl} ");
-                                    if (!string.IsNullOrWhiteSpace(downloadUrl))
+                                    _logger.LogInformation($"start download subtitle {downloadUrl}");
+
+                                    var response = await client.GetAsync(downloadUrl, cancellationToken);
+                                    var ms = new MemoryStream();
+                                    var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+                                    await stream.CopyToAsync(ms, cancellationToken);
+                                    ms.Position = 0;
+                                    _logger.LogInformation($"subtitle {downloadUrl} download comlete");
+
+
+                                    await _subtitleManager.UploadSubtitle(movie, new SubtitleResponse()
                                     {
-                                        _logger.LogInformation($"start download subtitle {downloadUrl}");
-
-                                        var response = await client.GetAsync(downloadUrl, cancellationToken);
-                                        var ms = new MemoryStream();
-                                        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
-                                        await stream.CopyToAsync(ms, cancellationToken);
-                                        ms.Position = 0;
-                                        _logger.LogInformation($"subtitle {downloadUrl} download comlete");
-
-
-                                        await _subtitleManager.UploadSubtitle(movie, new SubtitleResponse()
-                                        {
-                                            Format = "srt",
-                                            Language = language,
-                                            Stream = ms,
-                                        });
-                                    }
+                                        Format = "srt",
+                                        Language = language,
+                                        Stream = ms,
+                                    });
                                 }
                             }
-                            catch(Exception ex)
-                            {
-                                _logger.LogError(ex.ToString());
-                            }                          
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex.ToString());
                         }
                     }
                     progress.Report(index / items.Count);
@@ -103,7 +103,6 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                 index += 1;
             }
         }
-
         public IEnumerable<TaskTriggerInfo> GetDefaultTriggers()
         {
             yield return new TaskTriggerInfo
