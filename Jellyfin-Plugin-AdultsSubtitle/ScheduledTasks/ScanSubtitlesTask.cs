@@ -20,14 +20,12 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
         public string Category => AdultsSubtitlePlugin.Instance.Name;
         private readonly ILibraryManager _libraryManager;
         private readonly ILogger<ScanSubtitlesTask> _logger;
-        private readonly IProviderManager _providerManager;
         private readonly ISubtitleManager _subtitleManager;
         private readonly IHttpClientFactory _httpClientFactory;
-        public ScanSubtitlesTask(ILibraryManager libraryManager, ISubtitleManager subtitleManager, IHttpClientFactory httpClientFactory, IProviderManager providerManager, ILogger<ScanSubtitlesTask> logger)
+        public ScanSubtitlesTask(ILibraryManager libraryManager, ISubtitleManager subtitleManager, IHttpClientFactory httpClientFactory, ILogger<ScanSubtitlesTask> logger)
         {
             _subtitleManager = subtitleManager;
             _libraryManager = libraryManager;
-            _providerManager = providerManager;
             _logger = logger;
             _httpClientFactory = httpClientFactory;
         }
@@ -45,7 +43,11 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             {
                 if (item is Movie movie)
                 {
-                    if (!movie.HasSubtitles)
+                    var dirInfo = new DirectoryInfo(movie.ContainingFolderPath);
+                   
+                    if (!movie.HasSubtitles 
+                        && !movie.FileNameWithoutExtension.ToLower().EndsWith("-C") 
+                        && !dirInfo.GetFiles().Any(p => p.Name.Contains(movie.FileNameWithoutExtension) && p.Extension == ".srt"))
                     {
                         _logger.LogInformation($"{movie.FileNameWithoutExtension} has no subtitle");
                         var option = _libraryManager.GetLibraryOptions(item);
@@ -55,7 +57,10 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                             language = option.SubtitleDownloadLanguages[0];
                         }
                        
-                        if (option != null && option.SubtitleFetcherOrder.Contains(AdultsSubtitlePlugin.Instance.Name) && Api.LanguagesMaps.TryGetValue(language, out var subCatLanguage))
+                        if (option != null
+                            && !option.DisabledSubtitleFetchers.Contains(AdultsSubtitlePlugin.Instance.Name)
+                            && option.SubtitleFetcherOrder.Contains(AdultsSubtitlePlugin.Instance.Name) 
+                            && Api.LanguagesMaps.TryGetValue(language, out var subCatLanguage))
                         {
                             using var client = _httpClientFactory.CreateClient();
                             try
