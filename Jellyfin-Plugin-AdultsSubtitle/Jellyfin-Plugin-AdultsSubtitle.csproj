@@ -5,14 +5,14 @@
 		<RootNamespace>Jellyfin_Plugin_AdultsSubtitle</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.1.0.2</Version>
+		<Version>1.1.0.1</Version>
 		<GenerateDependencyFile>false</GenerateDependencyFile><!--remove deps.json-->
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>C:\ProgramData\Jellyfin\Server\plugins\AdultsSubtitle</OutputPath>
+		<OutputPath>C:\ProgramData\Jellyfin\Server\plugins\AdultsSubtitle_$(Version)</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<DebugSymbols>false</DebugSymbols>
@@ -20,7 +20,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="1.1.2" />
-		<PackageReference Include="Jellyfin.Controller" Version="10.8.13" >
+		<PackageReference Include="Jellyfin.Controller" Version="10.8.13">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
