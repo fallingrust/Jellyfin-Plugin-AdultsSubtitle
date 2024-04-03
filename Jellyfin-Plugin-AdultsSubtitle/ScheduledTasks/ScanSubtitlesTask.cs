@@ -108,7 +108,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             yield return new TaskTriggerInfo
             {
                 Type = TaskTriggerInfo.TriggerDaily,
-                TimeOfDayTicks = TimeSpan.FromHours(5).Ticks
+                TimeOfDayTicks = TimeSpan.FromHours(3).Ticks
             };
         }
     }

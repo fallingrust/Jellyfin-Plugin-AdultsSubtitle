@@ -1,14 +1,10 @@
-﻿using AngleSharp.Dom;
-using MediaBrowser.Common;
+﻿using MediaBrowser.Common;
 using MediaBrowser.Common.Configuration;
 using MediaBrowser.Common.Plugins;
-using MediaBrowser.Model.IO;
 using MediaBrowser.Model.Tasks;
 using MediaBrowser.Model.Updates;
 using Microsoft.Extensions.Logging;
-using System.IO;
 using System.IO.Compression;
-using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
 
@@ -53,7 +49,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                     await zipStream.CopyToAsync(ms, cancellationToken);
                     ms.Position = 0;
                     using var archive = new ZipArchive(ms);
-                    archive.ExtractToDirectory(Path.Combine(_applicationPaths.PluginsPath, $"AdultsSubtitle_v{lastestVersion.Value.Item1}"), true);
+                    archive.ExtractToDirectory(Path.Combine(_applicationPaths.PluginsPath, $"AdultsSubtitle_{lastestVersion.Value.Item1}"), true);
 
                     var curVersionPlugin = _pluginManager.GetPlugin(AdultsSubtitlePlugin.Instance.Id, curVersion);
                     if (curVersionPlugin != null)
@@ -65,7 +61,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             }
             catch (Exception e)
             {
-                _logger.LogError(e.ToString());
+                _logger.LogError(e,"update plugin error");
             }
         }
         public IEnumerable<TaskTriggerInfo> GetDefaultTriggers()
