@@ -26,6 +26,7 @@ jobs:
 
     - name: Publish
       run: dotnet publish --configuration Release --no-restore --output bin
+           dotnet publish --configuration Release.Emby --no-restore --output bin.Emby
 
     - name: Package
       id: create_package
@@ -33,12 +34,18 @@ jobs:
       run: |
         tag=$(git describe --tags --always)
         release_name="AdultsSubtitle_${tag}"
+        emby_release_name="AdultsSubtitle_Emby_${tag}"
 
         # Pack files
         7z a -tzip "${release_name}.zip" "./bin/*"
         echo "::set-output name=release_name::${release_name}"
         echo "::set-output name=release_tag::${tag}"
         echo "::set-output name=filename::${release_name}.zip"
+
+        7z a -tzip "${emby_release_name}.zip" "./bin.Emby/*"
+        echo "::set-output name=emby_release_name::${emby_release_name}"
+        echo "::set-output name=emby_release_name::${tag}"
+        echo "::set-output name=filename::${emby_release_name}.zip"
 
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
