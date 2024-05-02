@@ -6,22 +6,50 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Version>1.1.0.8</Version>
-		<GenerateDependencyFile>false</GenerateDependencyFile><!--remove deps.json-->
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Configurations>Debug;Release;Debug.Emby;Release.Emby</Configurations><!--remove deps.json-->
 	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)'=='Debug.Emby' or '$(Configuration)'=='Release.Emby'">
+		<DefineConstants>__EMBY__</DefineConstants>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<OutputPath>C:\ProgramData\Jellyfin\Server\plugins\AdultsSubtitle_v$(Version)</OutputPath>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug.Emby'">
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<OutputPath>E:\EDGE DownLoad\embyserver-win-x64-4.8.5.0\system\plugins</OutputPath>
+	</PropertyGroup>
+	
+	
+	<PropertyGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Release.Emby'">
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>None</DebugType>
 	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="AngleSharp" Version="1.1.2" />
+
+
+	<ItemGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Debug'">
 		<PackageReference Include="Jellyfin.Controller" Version="10.8.13">
 			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Release.Emby'  or '$(Configuration)'=='Debug.Emby'">
+		<PackageReference Include="MediaBrowser.Server.Core" Version="4.8.5">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AngleSharp" Version="1.1.2" >
+			
 		</PackageReference>
 	</ItemGroup>
 </Project>

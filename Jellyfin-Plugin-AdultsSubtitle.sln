@@ -7,16 +7,28 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin-Plugin-AdultsSubti
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug.Emby|Any CPU = Debug.Emby|Any CPU
+		Debug.Emby|x64 = Debug.Emby|x64
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release.Emby|Any CPU = Release.Emby|Any CPU
+		Release.Emby|x64 = Release.Emby|x64
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug.Emby|Any CPU.ActiveCfg = Debug.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug.Emby|Any CPU.Build.0 = Debug.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug.Emby|x64.ActiveCfg = Debug.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug.Emby|x64.Build.0 = Debug.Emby|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Release.Emby|Any CPU.ActiveCfg = Release.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Release.Emby|Any CPU.Build.0 = Release.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Release.Emby|x64.ActiveCfg = Release.Emby|Any CPU
+		{0D3F3273-1186-4EB6-892C-780F86479546}.Release.Emby|x64.Build.0 = Release.Emby|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D3F3273-1186-4EB6-892C-780F86479546}.Release|x64.ActiveCfg = Release|Any CPU
