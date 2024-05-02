@@ -26,8 +26,10 @@ jobs:
 
     - name: Publish
       run: dotnet publish --configuration Release --no-restore --output bin
-           dotnet publish --configuration Release.Emby --no-restore --output bin.Emby
-
+           
+    - name: Publish Emby
+      run: dotnet publish --configuration Release.Emby --no-restore --output bin.Emby
+      
     - name: Package
       id: create_package
       shell: bash
