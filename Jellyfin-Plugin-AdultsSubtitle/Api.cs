@@ -11,6 +11,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle
         {
             {"chi","zh-CN"},
             {"eng","en"},
+            {"zh-CN","zh-CN"},
         };
         private static readonly HtmlParser _parser = new();
         public static async Task<string?> SearchDownloadUrlAsync(HttpClient client, string language, string url, CancellationToken cancellationToken)

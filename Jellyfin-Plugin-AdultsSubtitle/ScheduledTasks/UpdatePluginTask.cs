@@ -1,4 +1,5 @@
-﻿using MediaBrowser.Common;
+﻿#if !__EMBY__
+using MediaBrowser.Common;
 using MediaBrowser.Common.Configuration;
 using MediaBrowser.Common.Plugins;
 using MediaBrowser.Model.Tasks;
@@ -91,3 +92,4 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
         }
     }
 }
+#endif
