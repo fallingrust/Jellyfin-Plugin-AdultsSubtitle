@@ -95,7 +95,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle
         public string Name => "Adults Subtitle";
         private readonly ILogger<AdultsSubtitleProvider> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
-        public IEnumerable<VideoContentType> SupportedMediaTypes => new[] { VideoContentType.Movie };
+        public IEnumerable<VideoContentType> SupportedMediaTypes => [VideoContentType.Movie];
 
 
         public AdultsSubtitleProvider(ILogger<AdultsSubtitleProvider> logger, IHttpClientFactory httpClientFactory)
@@ -151,7 +151,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle
                     results.Add(new RemoteSubtitleInfo()
                     {
                         Format = "srt",
-                        Name = downloadUrl[(downloadUrl.LastIndexOf("/") + 1)..],
+                        Name = downloadUrl[(downloadUrl.LastIndexOf('/') + 1)..],
                         ProviderName = Name,
                         Id = id
                     });

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<RootNamespace>Jellyfin_Plugin_AdultsSubtitle</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -36,7 +36,7 @@
 
 
 	<ItemGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Debug'">
-		<PackageReference Include="Jellyfin.Controller" Version="10.8.13">
+		<PackageReference Include="Jellyfin.Controller" Version="10.9.11">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		
@@ -48,7 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AngleSharp" Version="1.1.2" >
+		<PackageReference Include="AngleSharp" Version="1.1.2">
 			
 		</PackageReference>
 	</ItemGroup>

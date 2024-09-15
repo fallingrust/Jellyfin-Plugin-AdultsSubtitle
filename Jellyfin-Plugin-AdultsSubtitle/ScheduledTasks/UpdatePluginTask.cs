@@ -15,11 +15,11 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
     {
         public string Name => "Update Plugin";
 
-        public string Key => $"{AdultsSubtitlePlugin.Instance.Name}UpdatePlugin";
+        public string Key => $"{AdultsSubtitlePlugin.Instance!.Name}UpdatePlugin";
 
-        public string Description => $"Updates {AdultsSubtitlePlugin.Instance.Name} plugin to latest version.";
+        public string Description => $"Updates {AdultsSubtitlePlugin.Instance!.Name} plugin to latest version.";
 
-        public string Category => AdultsSubtitlePlugin.Instance.Name;
+        public string Category => AdultsSubtitlePlugin.Instance!.Name;
 
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<UpdatePluginTask> _logger;
@@ -40,7 +40,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             {
                 var curVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 var lastestVersion = await GetLatestVersionAsync(cancellationToken);
-                _logger.LogInformation($"Updates {AdultsSubtitlePlugin.Instance.Name} plugin to latest version:curVersion{curVersion} lastestVersion:{lastestVersion} ");
+                _logger.LogInformation($"Updates {AdultsSubtitlePlugin.Instance!.Name} plugin to latest version:curVersion{curVersion} lastestVersion:{lastestVersion} ");
                 if (curVersion != null && curVersion.CompareTo(lastestVersion.Value.Item1) < 0)
                 {
                     using var httpClient = _httpClientFactory.CreateClient();

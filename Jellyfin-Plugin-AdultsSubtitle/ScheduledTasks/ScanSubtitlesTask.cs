@@ -105,11 +105,11 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
 }
 #else
 
+using Jellyfin.Data.Enums;
 using MediaBrowser.Controller.Entities;
 using MediaBrowser.Controller.Entities.Movies;
 using MediaBrowser.Controller.Library;
 using MediaBrowser.Controller.Subtitles;
-using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Tasks;
 using Microsoft.Extensions.Logging;
 
@@ -119,11 +119,11 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
     {
         public string Name => "Scan Subtitles";
 
-        public string Key => $"{AdultsSubtitlePlugin.Instance.Name}ScanSubtitles";
+        public string Key => $"{AdultsSubtitlePlugin.Instance!.Name}ScanSubtitles";
 
         public string Description => "Scan subtitles and download missing subtitles";
 
-        public string Category => AdultsSubtitlePlugin.Instance.Name;
+        public string Category => AdultsSubtitlePlugin.Instance!.Name;
         private readonly ILibraryManager _libraryManager;
         private readonly ILogger<ScanSubtitlesTask> _logger;
         private readonly ISubtitleManager _subtitleManager;
@@ -140,8 +140,8 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
             var items = _libraryManager.GetItemList(new InternalItemsQuery()
             {
                 IsVirtualItem = false,
-                MediaTypes = new[] { MediaType.Video },
-                SourceTypes = new[] { SourceType.Library },
+                MediaTypes = [MediaType.Video],
+                SourceTypes = [SourceType.Library],
             });
             progress.Report(0);
             double index = 1.0;
@@ -155,7 +155,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                    
                     if (option != null
                         && !movie.HasSubtitles
-                        && !option.DisabledSubtitleFetchers.Contains(AdultsSubtitlePlugin.Instance.Name)
+                        && !option.DisabledSubtitleFetchers.Contains(AdultsSubtitlePlugin.Instance!.Name)
                         && option.SubtitleFetcherOrder.Contains(AdultsSubtitlePlugin.Instance.Name)
                         && Api.LanguagesMaps.TryGetValue(language, out var subCatLanguage)
                         && !movie.FileNameWithoutExtension.ToLower().EndsWith("-c")
