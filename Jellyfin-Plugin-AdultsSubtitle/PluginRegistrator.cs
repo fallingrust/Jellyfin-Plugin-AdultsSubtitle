@@ -1,4 +1,5 @@
-﻿using MediaBrowser.Controller;
+﻿#if !__EMBY__
+using MediaBrowser.Controller;
 using MediaBrowser.Controller.Plugins;
 using MediaBrowser.Controller.Subtitles;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,3 +14,4 @@ namespace Jellyfin_Plugin_AdultsSubtitle
         }
     }
 }
+#endif
