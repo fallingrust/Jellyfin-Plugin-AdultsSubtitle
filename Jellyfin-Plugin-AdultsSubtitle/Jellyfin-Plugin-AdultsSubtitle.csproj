@@ -5,7 +5,7 @@
 		<RootNamespace>Jellyfin_Plugin_AdultsSubtitle</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.1.0.10</Version>
+		<Version>1.1.1.0</Version>
 		<GenerateDependencyFile>false</GenerateDependencyFile>
 		<Configurations>Debug;Release;Debug.Emby;Release.Emby</Configurations><!--remove deps.json-->
 	</PropertyGroup>
