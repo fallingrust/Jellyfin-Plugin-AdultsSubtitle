@@ -111,6 +111,7 @@ using MediaBrowser.Controller.Entities.Movies;
 using MediaBrowser.Controller.Library;
 using MediaBrowser.Controller.Subtitles;
 using MediaBrowser.Model.Tasks;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
@@ -128,12 +129,16 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
         private readonly ILogger<ScanSubtitlesTask> _logger;
         private readonly ISubtitleManager _subtitleManager;
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IMemoryCache _memoryCache;
+        private readonly MemoryCacheEntryOptions _pendingAddExpiredOption = new() { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5) };
+        
         public ScanSubtitlesTask(ILibraryManager libraryManager, ISubtitleManager subtitleManager, IHttpClientFactory httpClientFactory, ILogger<ScanSubtitlesTask> logger)
         {
             _subtitleManager = subtitleManager;
             _libraryManager = libraryManager;
             _logger = logger;
             _httpClientFactory = httpClientFactory;
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
         }
         public async Task ExecuteAsync(IProgress<double> progress, CancellationToken cancellationToken)
         {
@@ -168,6 +173,13 @@ namespace Jellyfin_Plugin_AdultsSubtitle.ScheduledTasks
                         {
                             language = option.SubtitleDownloadLanguages[0];
                         }
+
+                        if (_memoryCache.TryGetValue(item.Id, out bool cacheDownload))
+                        {
+                            _logger.LogInformation($"{item.Name} has download within 5min ");
+                            return;
+                        }
+                        _memoryCache.Set(item.Id, true, _pendingAddExpiredOption);
 
                         using var client = _httpClientFactory.CreateClient();
                         try
