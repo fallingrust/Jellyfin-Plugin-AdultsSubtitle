@@ -9,6 +9,7 @@ namespace Jellyfin_Plugin_AdultsSubtitle
         public static readonly ConcurrentDictionary<string, (string, string)> DownloadUrls = new();
         public static readonly Dictionary<string, string> LanguagesMaps = new()
         {
+            {"zho","zh-CN"},
             {"chi","zh-CN"},
             {"eng","en"},
             {"zh-CN","zh-CN"},
